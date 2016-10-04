@@ -18,35 +18,46 @@
       <noscript>Please, enable JS!</noscript>
       <div class="colors">
         <div>
-          <p class="title colordemo">Background color</p>
+          To make you understand: <var>$prefix</var> is inputted prefix and
+          <var>$sel</var> is selector.
+          <br/>Possible selectors:
+          <ul>
+            <li><var>bg</var> - background</li>
+            <li><var>tx</var> - text</li>
+            <li><var>br</var> - border</li>
+            <li><var>ol</var> - outline</li>
+          </ul><br/>
+
+          <h1>Color-Demo and classnames</h1>
+          <p class="title colordemo">Background color (classes: .$prefix-bg)</p>
           <div class="color-bg colordemo cell"></div>
           <br/>
 
-          <p class="colordemo title">Light #5</p>
+          <p class="colordemo title">Light #5 (classes: .$prefix-$sel-l5 .$prefix-$sel-light)</p>
           <div class="color-bg-l5 colordemo cell"></div>
-          <p class="colordemo title">Light #4</p>
+          <p class="colordemo title">Light #4 (classes: .$prefix-$sel-l4)</p>
           <div class="color-bg-l4 colordemo cell"></div>
-          <p class="colordemo title">Light #3</p>
+          <p class="colordemo title">Light #3 (classes: .$prefix-$sel-l3)</p>
           <div class="color-bg-l3 colordemo cell"></div>
-          <p class="colordemo title">Light #2</p>
+          <p class="colordemo title">Light #2 (classes: .$prefix-$sel-l2)</p>
           <div class="color-bg-l2 colordemo cell"></div>
-          <p class="colordemo title">Light #1</p>
+          <p class="colordemo title">Light #1 (classes: .$prefix-$sel-l1)</p>
           <div class="color-bg-l1 colordemo cell"></div>
           <br/>
 
-          <p class="colordemo title">Normal</p>
+          <p class="colordemo title">Normal (classes: .$prefix-$sel-normal)</p>
           <div class="color-bg-normal colordemo cell"></div>
           <br/>
 
-          <p div class="colordemo title">Dark #1</p>
+          <p div class="colordemo title">Dark #1 (classes: .$prefix-$sel-d1)</p>
           <div class="color-bg-d1 colordemo cell"></div>
-          <p div class="colordemo title">Dark #2</p>
+          <p div class="colordemo title">Dark #2 (classes: .$prefix-$sel-d2)</p>
           <div class="color-bg-d2 colordemo cell"></div>
-          <p div class="colordemo title">Dark #3</p>
+          <p div class="colordemo title">Dark #3 (classes: .$prefix-$sel-d3)</p>
           <div class="color-bg-d3 colordemo cell"></div>
-          <p div class="colordemo title">Dark #4</p>
+          <p div class="colordemo title">Dark #4 (classes: .$prefix-$sel-d4 .$prefix-card-head)</p>
           <div class="color-bg-d4 colordemo cell"></div>
-          <p div class="colordemo title">Dark #5</p>
+          <p div class="colordemo title">Dark #5 (classes: .$prefix-$sel-d5 .$prefix-$sel-dark .$prefix-hb .$prefix-card-foot)</p>
           <div class="color-bg-d5 colordemo cell"></div>
         </div>
       </div>
@@ -56,4 +67,3 @@
 </html>
 
 <%# TODO: ЗАСТАВЬ УЖЕ ЭТОТ ЧЁРТОВ ХЕДЕРБАР РЕНДЕРИТЬСЯ НОРМАЛЬНО!!! %>
-<%# TODO: Приделать defer к вызову main.js. Заставить его грузить стандартную тему после загрузки %>

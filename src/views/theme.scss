@@ -40,10 +40,10 @@ $selTypes: (
 };
 
 // Register some alternative classnames
-.#{$prefix}-card-head .#{$prefix}-hb {
+.#{$prefix}-card-foot .#{$prefix}-hb {
   @extend .#{$prefix}-bg-d5;
 };
 
-.#{$prefix}-card-foot {
+.#{$prefix}-card-head {
   @extend .#{$prefix}-bg-d4;
 };
