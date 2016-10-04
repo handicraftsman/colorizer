@@ -5,14 +5,20 @@ ENV["PORT"] = "8080"
 
 set :public_folder, File.dirname(__FILE__) + '../public'
 set :port, 8080
-set :bind, "0.0.0.0" 
+set :bind, "0.0.0.0"
 pName = "Colorizer"
 $rColor = Sass::Script::Value::Color.from_hex("#ffffff")
+$rPrefix = Sass::Script::Value::String.new("")
 
 module Sass::Script::Functions
   def iColor()
     assert_type $rColor, :Color
     $rColor
+  end
+
+  def iPrefix()
+    assert_type $rPrefix, :String
+    $rPrefix
   end
 end
 
@@ -49,6 +55,14 @@ get "/theme.css" do
     lStyle = :expanded
   elsif params["style"] == "compact" then
     lStyle = :compact
+  else
+    lStyle = :compressed
+  end
+
+  if params["prefix"] == nil then
+    $rPrefix = Sass::Script::Value::String.new("color")
+  else
+    $rPrefix = Sass::Script::Value::String.new(params["prefix"])
   end
 
   scss :theme, :style => lStyle
