@@ -1,1 +1,1 @@
-web: rake
+web: ruby src/main.r
