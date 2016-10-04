@@ -4,7 +4,6 @@ require "sass"
 ENV["PORT"] = "8080"
 
 set :public_folder, File.dirname(__FILE__) + '../public'
-set :port, 8080
 set :bind, "0.0.0.0"
 pName = "Colorizer"
 $rColor = Sass::Script::Value::Color.from_hex("#ffffff")
