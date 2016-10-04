@@ -21,6 +21,10 @@ module Sass::Script::Functions
   end
 end
 
+configure do
+  set :protection, except: [:frame_options]
+end
+
 get "/" do
   erb :main, :locals => {:pName => pName}
 end
