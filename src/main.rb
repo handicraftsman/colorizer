@@ -1,6 +1,8 @@
 require "sinatra"
 require "sass"
 
+ENV["PORT"] = "8080"
+
 set :public_folder, File.dirname(__FILE__) + '../public'
 set :port, 8080
 pName = "Colorizer"
