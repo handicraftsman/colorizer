@@ -1,0 +1,45 @@
+#headerbar {
+  // Make it fixed
+  top: 0;
+  left: 0;
+  position: fixed;
+
+  // We are not supersmall dwarves
+  padding: 6px;
+  padding-right: 16px;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  // Default colors
+  background-color: black;
+  color: lightgrey;
+
+  // To make it look better
+  list-style-type: none;
+  overflow: hidden;
+  border-bottom-right-radius: 16px;
+}
+
+#headerbar a {
+  color: white;
+  text-decoration: none;
+}
+
+#headerbar input[type=text] {
+  border-color: none;
+  border-width: 0;
+  border-style: none;
+
+  margin: 0;
+
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
+}
+
+#headerbar * {
+  padding-left: 2px;
+  padding-right: 2px;
+
+  margin-top: 0;
+  margin-bottom: 0;
+}

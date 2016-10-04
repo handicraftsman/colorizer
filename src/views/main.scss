@@ -1,0 +1,27 @@
+@import "headerbar";
+
+@import url(https://fonts.googleapis.com/css?family=Fira+Mono:400&subset=latin);
+
+body {
+  background-color: #F5F5F5;
+  font-family: "Fira Mono", monospace;
+};
+
+.colordemo.title {
+  margin-bottom: 0;
+};
+
+.colordemo.cell {
+  margin-top: 0;
+
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+
+  height: 50px;
+  width: 50px;
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+};

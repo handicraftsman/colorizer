@@ -1,0 +1,2 @@
+lUpdate = () ->
+  alert("Updating...")
