@@ -6,9 +6,26 @@ $color: iColor();
 $selTypes: (
   bg: "background-",
   br: "border-",
+  ol: "outline-",
   tx: "",
 );
 
-.bg-color {
-  background-color: $color + hsl(0, -100, 80);
+.color-bg {
+  background-color: $color + hsl(0, 100, 100) - hsl(0, 5, 5)
+}
+
+@each $iType, $iSel in $selTypes {
+  .color-#{$iType}-normal { // Normal color is color from iColor() func
+    #{$iSel}color: $color;
+  };
+
+  // Now we'll generate color-shades
+  @each $iNum in (1, 2, 3, 4, 5) {
+    .color-#{$iType}-d#{$iNum} {
+      #{$iSel}color: $color - hsl(0, 0, 5*$iNum);
+    };
+    .color-#{$iType}-l#{$iNum} {
+      #{$iSel}color: $color + hsl(0, 0, 5*$iNum);
+    };
+  };
 };

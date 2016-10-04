@@ -4,10 +4,10 @@
   <head>
     <title><%= pName %></title>
     <link rel="stylesheet" href="/main.css">
-    <link rel="stylesheet" href="/theme.css?style=nested&amp;color=ABC123"
-    <script src="/main.js"></script>
+    <link id="theme_slot" rel="stylesheet">
+    <script src="/main.js" defer></script>
   </head>
-  <body class="bg-color">
+  <body class="color-bg">
     <div id="headerbar" class="theme-bg-d5">
       <strong style="font-size: 16px; margin: 0"><%= pName %> |</strong>
       <input type="text"></input>
@@ -19,7 +19,7 @@
       <div class="colors">
         <div>
           <p class="title colordemo">Background color</p>
-          <div class="color-bg cell"></div>
+          <div class="color-bg colordemo cell"></div>
           <br/>
 
           <p class="colordemo title">Light #5</p>
@@ -32,6 +32,22 @@
           <div class="color-bg-l2 colordemo cell"></div>
           <p class="colordemo title">Light #1</p>
           <div class="color-bg-l1 colordemo cell"></div>
+          <br/>
+
+          <p class="colordemo title">Normal</p>
+          <div class="color-bg-normal colordemo cell"></div>
+          <br/>
+
+          <p div class="colordemo title">Dark #1</p>
+          <div class="color-bg-d1 colordemo cell"></div>
+          <p div class="colordemo title">Dark #2</p>
+          <div class="color-bg-d2 colordemo cell"></div>
+          <p div class="colordemo title">Dark #3</p>
+          <div class="color-bg-d3 colordemo cell"></div>
+          <p div class="colordemo title">Dark #4</p>
+          <div class="color-bg-d4 colordemo cell"></div>
+          <p div class="colordemo title">Dark #5</p>
+          <div class="color-bg-d5 colordemo cell"></div>
         </div>
       </div>
     </div>
