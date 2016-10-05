@@ -13,8 +13,8 @@ $selTypes: (
 );
 
 .#{$prefix}-bg {
-  background-color: $color + hsl(0, 100, 100) - hsl(0, 5, 5)
-}
+  background-color: hsl(hue($color), 20, 100-5);
+};
 
 @each $iType, $iSel in $selTypes {
   .#{$prefix}-#{$iType}-normal { // Normal color is color from iColor() func
