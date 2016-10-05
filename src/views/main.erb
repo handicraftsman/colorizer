@@ -16,55 +16,62 @@
 
     <div style="margin-top: 32px">
       <noscript>Please, enable JS!</noscript>
-      <div class="colors">
-        <div>
-          To make you understand: <var>$prefix</var> is inputted prefix and
-          <var>$sel</var> is selector.
-          <br/>Possible selectors:
-          <ul>
-            <li><var>bg</var> - background</li>
-            <li><var>tx</var> - text</li>
-            <li><var>br</var> - border</li>
-            <li><var>ol</var> - outline</li>
-          </ul><br/>
+      To make you understand: <var>$prefix</var> is inputted prefix and
+      <var>$sel</var> is selector.
+      <br/>Possible selectors:
+      <ul>
+        <li><var>bg</var> - background</li>
+        <li><var>tx</var> - text</li>
+        <li><var>br</var> - border</li>
+        <li><var>ol</var> - outline</li>
+      </ul><br/>
 
-          <h1>Color-Demo and classnames</h1>
-          <p class="title colordemo">Background color (classes: .$prefix-bg)</p>
-          <div class="color-bg colordemo cell"></div>
-          <br/>
+      <h1>Color-Demo and classnames</h1>
+      <ul class="colorlist">
+        <li class="color-bg">
+          Background color ( .$prefix-bg )
+        </li>
+        <li class="color-bg-l5 color-br-d5">
+          Light #5 ( .$prefix-$sel-l5 .$prefix-$sel-light )
+        </li>
+        <li class="color-bg-l4 color-br-d4">
+          Light #4 ( .$prefix-$sel-l4 )
+        </li>
+        <li class="color-bg-l3 color-br-d3">
+          Light #3 ( .$prefix-$sel-l3 )
+        </li>
+        <li class="color-bg-l2 color-br-d2">
+          Light #2 ( .$prefix-$sel-l2 )
+        </li>
+        <li class="color-bg-l1 color-br-d1">
+          Light #1 ( .$prefix-$sel-l1 )
+        </li>
+        <li class="color-bg-normal color-br-d5">
+          Normal ( .$prefix-$sel-normal )
+        </li>
+        <li class="color-bg-d1 color-br-l1">
+          Dark #1 ( .$prefix-$sel-d1 )
+        </li>
+        <li class="color-bg-d2 color-br-l2">
+          Dark #2 ( .$prefix-$sel-d2 )
+        </li>
+        <li class="color-bg-d3 color-br-l3">
+          Dark #3 ( .$prefix-$sel-d3 )
+        </li>
+        <li class="color-bg-d4 color-br-l4">
+          Dark #4 ( .$prefix-$sel-d4 .$prefix-card-head )
+        </li>
+        <li class="color-bg-d5 color-br-l5">
+          Dark #5 ( .$prefix-$sel-d5 .$prefix-card-foot .$prefix-hb )
+        </li>
 
-          <p class="colordemo title">Light #5 (classes: .$prefix-$sel-l5 .$prefix-$sel-light)</p>
-          <div class="color-bg-l5 colordemo cell"></div>
-          <p class="colordemo title">Light #4 (classes: .$prefix-$sel-l4)</p>
-          <div class="color-bg-l4 colordemo cell"></div>
-          <p class="colordemo title">Light #3 (classes: .$prefix-$sel-l3)</p>
-          <div class="color-bg-l3 colordemo cell"></div>
-          <p class="colordemo title">Light #2 (classes: .$prefix-$sel-l2)</p>
-          <div class="color-bg-l2 colordemo cell"></div>
-          <p class="colordemo title">Light #1 (classes: .$prefix-$sel-l1)</p>
-          <div class="color-bg-l1 colordemo cell"></div>
-          <br/>
+      </ul>
 
-          <p class="colordemo title">Normal (classes: .$prefix-$sel-normal)</p>
-          <div class="color-bg-normal colordemo cell"></div>
-          <br/>
-
-          <p div class="colordemo title">Dark #1 (classes: .$prefix-$sel-d1)</p>
-          <div class="color-bg-d1 colordemo cell"></div>
-          <p div class="colordemo title">Dark #2 (classes: .$prefix-$sel-d2)</p>
-          <div class="color-bg-d2 colordemo cell"></div>
-          <p div class="colordemo title">Dark #3 (classes: .$prefix-$sel-d3)</p>
-          <div class="color-bg-d3 colordemo cell"></div>
-          <p div class="colordemo title">Dark #4 (classes: .$prefix-$sel-d4 .$prefix-card-head)</p>
-          <div class="color-bg-d4 colordemo cell"></div>
-          <p div class="colordemo title">Dark #5 (classes: .$prefix-$sel-d5 .$prefix-$sel-dark .$prefix-hb .$prefix-card-foot)</p>
-          <div class="color-bg-d5 colordemo cell"></div>
-
-          <h4><a href="http://github.com/handicraftsman/colorizer">Colorizer on GitHub</a></h4>
-        </div>
-      </div>
+      <h4><a href="http://github.com/handicraftsman/colorizer">Colorizer on GitHub</a></h4>
     </div>
   </body>
 </html>
 
 <%# TODO: ЗАСТАВЬ УЖЕ ЭТОТ ЧЁРТОВ ХЕДЕРБАР РЕНДЕРИТЬСЯ НОРМАЛЬНО!!! %>
+<%# TODO: Осталось приделать JavaScript к генератору. А затем можно писать
+          нормальный гуй %>

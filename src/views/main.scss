@@ -25,3 +25,28 @@ body {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 };
+
+ul.colorlist {
+  display: block;
+  list-style-type: none;
+  padding: 4px;
+};
+
+ul.colorlist li {
+  display: block;
+  border-style: solid;
+
+  border-width: 2px;
+  //border-color: black;
+
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 8px;
+};
+
+p[float=left] {
+  float: left;
+};
+p[float=right] {
+  float: right;
+};

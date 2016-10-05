@@ -3,6 +3,7 @@ colorgenbynotifydonotuse {
 };
 $color: iColor();
 $prefix: iPrefix();
+$normalWhite: iNormalWhite();
 
 $selTypes: (
   bg: "background-",
@@ -18,15 +19,26 @@ $selTypes: (
 @each $iType, $iSel in $selTypes {
   .#{$prefix}-#{$iType}-normal { // Normal color is color from iColor() func
     #{$iSel}color: $color;
+    @if ($normalWhite == true) {
+      @if ($iType == "bg") {
+        color: white;
+      };
+    };
   };
 
   // Now we'll generate color-shades
   @each $iNum in (1, 2, 3, 4, 5) {
     .#{$prefix}-#{$iType}-d#{$iNum} {
       #{$iSel}color: $color - hsl(0, 0, 5*$iNum);
+      @if ($iType == "bg") {
+        color: white;
+      };
     };
     .#{$prefix}-#{$iType}-l#{$iNum} {
       #{$iSel}color: $color + hsl(0, 0, 5*$iNum);
+      @if ($iType == "bg") {
+        color: black;
+      };
     };
   };
 
