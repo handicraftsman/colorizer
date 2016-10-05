@@ -52,6 +52,7 @@ get "/jquery.js" do
 end
 
 get "/theme.css" do
+  cache_control :public, :max_age => 1
   if params["color"] == nil then
     $rColor = Sass::Script::Value::Color.from_hex(("#ffffff"))
   else
