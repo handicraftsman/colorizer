@@ -6,7 +6,7 @@ field = document.getElementById("colorField")
 themeSlot = document.getElementById("theme_slot")
 
 makeColorStr = (color) ->
-  "/theme.css?style=nested&amp&color=#{color}"
+  "/theme.css?style=nested&color=#{color}"
 
 updateTheme = () ->
   color = field.value
