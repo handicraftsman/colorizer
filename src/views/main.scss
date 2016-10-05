@@ -50,3 +50,12 @@ p[float=left] {
 p[float=right] {
   float: right;
 };
+
+button {
+  background-color: lightgrey;
+  border-style: solid;
+  border-color: black;
+  box-shadow: 2px 2px 1px grey;
+  background-color: #2C75A0;
+  color: white;
+}
