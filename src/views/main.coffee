@@ -4,16 +4,18 @@
 btn = document.getElementById("genBtn")
 sbtn = document.getElementById("sampBtn")
 field = document.getElementById("colorField")
-themeSlot = document.getElementById("theme_slot")
+themeSlot = document.getElementById("themeSlot")
 
-makeColorStr = (color) ->
-  "/theme.css?color=#{color}"
+makeColorStr = (color, style) ->
+  "/theme.css?color=#{color}&style=#{style}"
 
 updateTheme = () ->
   color = field.value
-  page = makeColorStr(color)
-  theme_slot.href = page
+  page = makeColorStr color, "compressed"
+  themeSlot.href = page
+
+themeSlot.href = makeColorStr "2C75A0", "compressed"
 
 btn.addEventListener "click", updateTheme
 sbtn.addEventListener "click", () ->
-  theme_slot.href = makeColorStr "2C75A0"
+  themeSlot.href = makeColorStr "2C75A0", "compressed"

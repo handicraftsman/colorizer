@@ -2,81 +2,213 @@
 
 <html>
   <head>
-    <title><%= pName %></title>
-    <link rel="stylesheet" href="/main.css">
-    <link id="theme_slot" rel="stylesheet">
-    <script src="/main.js" defer="defer"></script>
+    <title><%= pName %></title><%# Title %>
+    <%# Imports: start %>
+    <link rel="stylesheet" href="/bootstrap.css">
+    <script src="/jquery.js"></script>
+    <script src="/jscolor.js"></script>
+    <script src="/bootstrap.js"></script>
+    <%# Slot for our theme %>
+    <link rel="stylesheet" id="themeSlot">
+    <%# Our main script %>
+    <script src="/main.js"></script>
+    <%# Imports: end %>
+    <style>
+      .bordered {
+        border-width: 1px;
+        border-style: solid;
+      };
+    </style>
+
   </head>
-  <body class="color-bg">
-    <div id="headerbar" class="theme-bg-d5">
-      <strong style="font-size: 16px; margin: 0"><%= pName %> |</strong>
-      <input type="text" id="colorField"></input>
-      <a href="#" id="genBtn">Generate</a>
-    </div>
+  <body class="fluid-container color-bg">
+    <%# Navbar %>
+    <nav role="navigation" class="navbar navbar-inverse color-hb" style="border-radius: 0; border-width: 0">
+      <div class="navbar-header">
+        <span class="navbar-brand" style="color: white">Colorizer</a>
+      </div>
+    </nav>
 
-    <div style="margin-top: 32px">
-      <noscript>Please, enable JS!</noscript>
-      Click button below to see example or use own color at form above
-      <br/>
-      <button id="sampBtn">Generate sample theme (#2C75A0)</button>
-      <br/><br/>
 
-      To make you understand: <var>$prefix</var> is inputted prefix and
-      <var>$sel</var> is selector.
-      <br/>Possible selectors:
-      <ul>
-        <li><var>bg</var> - background</li>
-        <li><var>tx</var> - text</li>
-        <li><var>br</var> - border</li>
-        <li><var>ol</var> - outline</li>
-      </ul><br/>
+    <div style="margin-left: auto; margin-right: auto; width: 980px">
+      <%# NoScript Warning %>
+      <noscript>
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h2 class="panel-title">Please, enable JavaScript</h2>
+          </div>
+        </div>
+      </noscript>
 
-      <h1>Color-Demo and classnames</h1>
-      <ul class="colorlist">
-        <li class="color-bg">
-          Background color ( .$prefix-bg )
-        </li>
-        <li class="color-bg-l5 color-br-d5">
-          Light #5 ( .$prefix-$sel-l5 .$prefix-$sel-light )
-        </li>
-        <li class="color-bg-l4 color-br-d4">
-          Light #4 ( .$prefix-$sel-l4 )
-        </li>
-        <li class="color-bg-l3 color-br-d3">
-          Light #3 ( .$prefix-$sel-l3 )
-        </li>
-        <li class="color-bg-l2 color-br-d2">
-          Light #2 ( .$prefix-$sel-l2 )
-        </li>
-        <li class="color-bg-l1 color-br-d1">
-          Light #1 ( .$prefix-$sel-l1 )
-        </li>
-        <li class="color-bg-normal color-br-d5">
-          Normal ( .$prefix-$sel-normal )
-        </li>
-        <li class="color-bg-d1 color-br-l1">
-          Dark #1 ( .$prefix-$sel-d1 )
-        </li>
-        <li class="color-bg-d2 color-br-l2">
-          Dark #2 ( .$prefix-$sel-d2 )
-        </li>
-        <li class="color-bg-d3 color-br-l3">
-          Dark #3 ( .$prefix-$sel-d3 )
-        </li>
-        <li class="color-bg-d4 color-br-l4">
-          Dark #4 ( .$prefix-$sel-d4 .$prefix-card-head )
-        </li>
-        <li class="color-bg-d5 color-br-l5">
-          Dark #5 ( .$prefix-$sel-d5 .$prefix-card-foot .$prefix-hb )
-        </li>
+      <%# TODO %>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h4 class="panel-title">TODO</h4>
+        </div>
+        <div class="panel-body">
+          <ol>
+            <li>Make it generate image (canvas)</li>
+            <li>Restyle whole page with our theme</li>
+            <li>Write help</li>
+            <li>Make switch for theme's "!importance"</li>
+          </ol>
+        </div>
+      </div>
 
-      </ul>
+      <%# Configurator %>
+      <div class="panel panel-default">
+        <div class="panel-heading color-card-head">
+          <h4 class="panel-title" style="">Generator Config</h4>
+        </div>
+        <div class="panel-body">
+          <%# Field for base color %>
+          <div class="form-group">
+            <label for="colField">Base Color</label><br/>
+            <input id="colField" class="jscolor form-control" type="text" pattern="([A-Z a-z 0-9]{6}|#[A-Z a-z 0-9]{3})" placeholder="2C75A0"></input>
+          </div>
 
-      <h4><a href="http://github.com/handicraftsman/colorizer">Colorizer on GitHub</a></h4>
+          <%# Field for prefix %>
+          <div class="form-group">
+            <label for="prefixField">Prefix</label><br/>
+            <input id="prefixField" class="form-control" type="text" value="color"></input>
+          </div>
+
+          <%# Out-Style radio-button-group %>
+          <div class="form-group">
+            <label for="styleSelector">Output Style</label><br/>
+            <div class="radio">
+              <label><input type="radio" name="outStyleSelector" value="compressed" enabled>Compressed</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="outStyleSelector" value="compact">Compact</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="outStyleSelector" value="nested">Nested</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="outStyleSelector" value="expanded">Expanded</label>
+            </div>
+          </div>
+
+          <%# Dark/Light Switcher %>
+          <div class="form-group">
+            <label for="styleSelector">Theme Style</label>
+            <div class="radio">
+              <label><input type="radio" name="themeStyleSelector" value="dark" selected>Dark</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="themeStyleSelector" value="light">Light</label>
+            </div>
+          </div>
+
+          <%# "Submit" button %>
+          <button type="button" class="btn btn-primary" id="genBtn">Generate</button>
+        </div>
+      </div>
+
+      <%# Help panel %>
+      <div class="panel panel-default">
+        <div class="panel-heading color-card-head">
+          <h4 class="panel-title">Help</h4>
+        </div>
+        <div class="panel-body">
+          WIP
+        </div>
+      </div>
+
+      <%# Color Demo Panel %>
+      <div class="panel panel-default">
+        <div class="panel-heading color-card-head">
+          <h4 class="panel-title">Color Demo</h4>
+        </div>
+        <div class="panel-body">
+          <ul class="list-group" id="cdemo">
+            <%# Color Demo: Start %>
+            <li class="list-group-item color-bg color-br-d5">
+              Background Color
+              <span class="badge color-bg-normal">.$prefix-bg</span>
+            </li>
+            <li class="list-group-item color-bg-l5 color-br-d5">
+              Light #5
+              <span class="badge lonly color-bg-l5 color-br-d5 bordered">.$prefix-hb .$prefix-card-foot</span>
+              <span class="badge color-bg-normal">.$prefix-$sel-l5 .$prefix-$sel-light</span>
+            </li>
+            <li class="list-group-item color-bg-l4 color-br-d4">
+              Light #4
+              <span class="badge lonly color-bg-l5 color-br-d5 bordered">.$prefix-card-head</span>
+              <span class="badge color-bg-normal">.$prefix-$sel-l4</span>
+            </li>
+            <li class="list-group-item color-bg-l3 color-br-d3">
+              Light #3
+              <span class="badge color-bg-normal">.$prefix-$sel-l3</span>
+            </li>
+            <li class="list-group-item color-bg-l2 color-br-d2">
+              Light #2
+              <span class="badge color-bg-normal">.$prefix-$sel-l2</span>
+            </li>
+            <li class="list-group-item color-bg-l1 color-br-d1">
+              Light #1
+              <span class="badge color-bg-normal">.$prefix-$sel-l1</span>
+            </li>
+
+            <li class="list-group-item color-bg-normal color-br-normal">
+              Normal
+              <span class="badge color-bg-normal">.$prefix-$sel-normal
+            </li>
+
+            <li class="list-group-item color-bg-d1 color-br-l1">
+              Dark #1
+              <span class="badge color-bg-normal">.$prefix-$sel-d1</span>
+            </li>
+            <li class="list-group-item color-bg-d2 color-br-l2">
+              Dark #2
+              <span class="badge color-bg-normal">.$prefix-$sel-d2</span>
+            </li>
+            <li class="list-group-item color-bg-d3 color-br-l3">
+              Dark #3
+              <span class="badge color-bg-normal">.$prefix-$sel-d3</span>
+            </li>
+            <li class="list-group-item color-bg-d4 color-br-l4">
+              Dark #4
+              <span class="badge donly color-bg-d5 color-br-l5 bordered">.$prefix-card-head</span>
+              <span class="badge color-bg-normal">.$prefix-$sel-d4</span>
+            </li>
+            <li class="list-group-item color-bg-d5 color-br-l5">
+              Dark #5
+              <span class="badge donly color-bg-d5 color-br-l5 bordered">.$prefix-hb .$prefix-card-foot</span>
+              <span class="badge color-bg-normal">.$prefix-$sel-d5 .$prefix-$sel-dark</span>
+            </li>
+            <%# Color Demo: End %>
+          </ul>
+        </div>
+      </div>
+
+      <%# Image Panel (when we need to store colors as image) %>
+      <div class="panel panel-default">
+        <div class="panel-heading color-card-head">
+          <h4 class="panel-title">Image</h4>
+        </div>
+        <div class="panel-body">
+          WIP
+        </div>
+      </div>
+
+      <%# Link to current theme %>
+      <div class="panel panel-default">
+        <div class="panel-heading color-card-head">
+          <h4 class="panel-title">Get CSS</h4>
+        </div>
+        <div class="panel-body">
+          <input id="themeUrlSlot" class="form-control" type="url" placeholder="Generate theme to get URL">
+        </div>
+      </div>
+
+      <%# Link to GH %>
+      <div class="panel panel-default">
+        <div class="panel-heading color-card-head">
+          <a class="panel-title" href="https://github.com/handicraftsman/colorizer"><u>Colorizer on GitHub</u></a>
+        </div>
+      </div>
     </div>
   </body>
 </html>
-
-<%# TODO: ЗАСТАВЬ УЖЕ ЭТОТ ЧЁРТОВ ХЕДЕРБАР РЕНДЕРИТЬСЯ НОРМАЛЬНО!!! %>
-<%# TODO: Осталось приделать JavaScript к генератору. А затем можно писать
-          нормальный гуй %>

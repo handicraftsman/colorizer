@@ -4,6 +4,7 @@ colorgenbynotifydonotuse {
 $color: iColor();
 $prefix: iPrefix();
 $normalWhite: iNormalWhite();
+$important: "!important";
 
 $selTypes: (
   bg: "background-",
@@ -13,15 +14,15 @@ $selTypes: (
 );
 
 .#{$prefix}-bg {
-  background-color: hsl(hue($color), 20, 100-5);
+  background-color: hsl(hue($color), 20, 100-5) #{$important};
 };
 
 @each $iType, $iSel in $selTypes {
   .#{$prefix}-#{$iType}-normal { // Normal color is color from iColor() func
-    #{$iSel}color: $color;
+    #{$iSel}color: $color #{$important};
     @if ($normalWhite == true) {
       @if ($iType == "bg") {
-        color: white;
+        color: white #{$important};
       };
     };
   };
@@ -29,15 +30,15 @@ $selTypes: (
   // Now we'll generate color-shades
   @each $iNum in (1, 2, 3, 4, 5) {
     .#{$prefix}-#{$iType}-d#{$iNum} {
-      #{$iSel}color: $color - hsl(0, 0, 5*$iNum);
+      #{$iSel}color: $color - hsl(0, 0, 5*$iNum) #{$important};
       @if ($iType == "bg") {
-        color: white;
+        color: white #{$important};
       };
     };
     .#{$prefix}-#{$iType}-l#{$iNum} {
-      #{$iSel}color: $color + hsl(0, 0, 5*$iNum);
+      #{$iSel}color: $color + hsl(0, 0, 5*$iNum) #{$important};
       @if ($iType == "bg") {
-        color: black;
+        color: black #{$important};
       };
     };
   };
@@ -52,7 +53,7 @@ $selTypes: (
 };
 
 // Register some alternative classnames
-.#{$prefix}-card-foot .#{$prefix}-hb {
+.#{$prefix}-card-foot, .#{$prefix}-hb {
   @extend .#{$prefix}-bg-d5;
 };
 

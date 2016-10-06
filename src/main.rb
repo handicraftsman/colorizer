@@ -3,7 +3,7 @@ require "sass"
 
 ENV["PORT"] = "8080"
 
-set :public_folder, File.dirname(__FILE__) + '../public'
+#set :public_folder, File.dirname(__FILE__) + '../public'
 set :bind, "0.0.0.0"
 pName = "Colorizer"
 $rColor = Sass::Script::Value::Color.from_hex("#ffffff")
@@ -35,21 +35,35 @@ get "/" do
   erb :main, :locals => {:pName => pName}
 end
 
-get "/old.html" do
-  erb :old, :locals => {:pName => pName}
+get "/main.js" do
+  send_file "main.js"
+end
+
+get "/jquery.js" do
+  send_file "jquery.js"
+end
+
+get "/jscolor.js" do
+  send_file "jscolor.js"
+end
+
+get "/bootstrap.css" do
+  send_file "bootstrap.css"
+end
+
+get "/bootstrap.js" do
+  send_file "bootstrap.js"
 end
 
 get "/main.css" do
   scss :main
 end
 
-get "/main.js" do
-  coffee :main
-end
+#get "/main.js" do
+#  coffee :main
+#end
 
-get "/jquery.js" do
-  send_file "jquery.js"
-end
+
 
 get "/theme.css" do
   cache_control :public, :max_age => 1

@@ -51,11 +51,24 @@ p[float=right] {
   float: right;
 };
 
-button {
-  background-color: lightgrey;
+button, input {
+  background-color: #FEFEFE;
   border-style: solid;
   border-color: black;
   box-shadow: 2px 2px 1px grey;
+}
+
+#sampBtn {
   background-color: #2C75A0;
   color: white;
+}
+
+.for-control {
+  margin-bottom: 0;
+  padding-bottom: 1px;
+}
+
+.control {
+  margin-top: 0;
+  padding-top: 1px;
 }
