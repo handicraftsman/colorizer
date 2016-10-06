@@ -35,7 +35,16 @@ function prepColorDemo() {
 
 function updColorDemo(input) {
   $(".cdemoprefix").html(input);
-}
+};
+
+function genSampleTheme() {
+  var url = genThemeUrl("2C75A0", "color", "compressed", "dark");
+  $("#themeSlot").attr({
+    "href": url
+  });
+  setOutUrl(outUrl = genThemeUrl(getColor(), getPrefix(), getOutStyle(), getThemeStyle()));
+  updColorDemo(getPrefix());
+};
 
 $(document).ready(function() {
   prepColorDemo();
@@ -48,4 +57,6 @@ $(document).ready(function() {
     setOutUrl(outUrl = genThemeUrl(getColor(), getPrefix(), getOutStyle(), getThemeStyle()));
     updColorDemo(getPrefix());
   });
+
+  genSampleTheme();
 });

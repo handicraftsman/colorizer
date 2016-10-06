@@ -39,6 +39,10 @@ get "/main.js" do
   send_file "main.js"
 end
 
+get "/imggen.js" do
+  send_file "imggen.js"
+end
+
 get "/jquery.js" do
   send_file "jquery.js"
 end
@@ -58,12 +62,6 @@ end
 get "/main.css" do
   scss :main
 end
-
-#get "/main.js" do
-#  coffee :main
-#end
-
-
 
 get "/theme.css" do
   cache_control :public, :max_age => 1

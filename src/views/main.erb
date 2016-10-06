@@ -12,6 +12,8 @@
     <link rel="stylesheet" id="themeSlot">
     <%# Our main script %>
     <script src="/main.js"></script>
+    <%# Image Generator %>
+    <script src="/imggen.js"></script>
     <%# Imports: end %>
     <style>
       .bordered {
@@ -47,10 +49,10 @@
         </div>
         <div class="panel-body">
           <ol>
-            <li>Make it generate image (canvas)</li>
             <li>Restyle whole page with our theme</li>
             <li>Write help</li>
             <li>Make switch for theme's "!importance"</li>
+            <li>Write color correction</li>
           </ol>
         </div>
       </div>
@@ -102,7 +104,7 @@
           </div>
 
           <%# "Submit" button %>
-          <button type="button" class="btn btn-primary" id="genBtn">Generate</button>
+          <button type="button" class="btn btn-primary" id="genBtn">Generate Style</button>
         </div>
       </div>
 
@@ -124,56 +126,57 @@
         <div class="panel-body">
           <ul class="list-group" id="cdemo">
             <%# Color Demo: Start %>
-            <li class="list-group-item color-bg color-br-d5">
+            <li id="c-bg" class="list-group-item color-bg color-br-d5">
               Background Color
               <span class="badge color-bg-normal">.$prefix-bg</span>
             </li>
-            <li class="list-group-item color-bg-l5 color-br-d5">
+
+            <li id="c-l5" class="list-group-item color-bg-l5 color-br-d5">
               Light #5
               <span class="badge lonly color-bg-l5 color-br-d5 bordered">.$prefix-hb .$prefix-card-foot</span>
               <span class="badge color-bg-normal">.$prefix-$sel-l5 .$prefix-$sel-light</span>
             </li>
-            <li class="list-group-item color-bg-l4 color-br-d4">
+            <li id="c-l4" class="list-group-item color-bg-l4 color-br-d4">
               Light #4
               <span class="badge lonly color-bg-l5 color-br-d5 bordered">.$prefix-card-head</span>
               <span class="badge color-bg-normal">.$prefix-$sel-l4</span>
             </li>
-            <li class="list-group-item color-bg-l3 color-br-d3">
+            <li id="c-l3" class="list-group-item color-bg-l3 color-br-d3">
               Light #3
               <span class="badge color-bg-normal">.$prefix-$sel-l3</span>
             </li>
-            <li class="list-group-item color-bg-l2 color-br-d2">
+            <li id="c-l2" class="list-group-item color-bg-l2 color-br-d2">
               Light #2
               <span class="badge color-bg-normal">.$prefix-$sel-l2</span>
             </li>
-            <li class="list-group-item color-bg-l1 color-br-d1">
+            <li id="c-l1" class="list-group-item color-bg-l1 color-br-d1">
               Light #1
               <span class="badge color-bg-normal">.$prefix-$sel-l1</span>
             </li>
 
-            <li class="list-group-item color-bg-normal color-br-normal">
+            <li id="c-nr" class="list-group-item color-bg-normal color-br-normal">
               Normal
               <span class="badge color-bg-normal">.$prefix-$sel-normal
             </li>
 
-            <li class="list-group-item color-bg-d1 color-br-l1">
+            <li id="c-d1" class="list-group-item color-bg-d1 color-br-l1">
               Dark #1
               <span class="badge color-bg-normal">.$prefix-$sel-d1</span>
             </li>
-            <li class="list-group-item color-bg-d2 color-br-l2">
+            <li id="c-d2" class="list-group-item color-bg-d2 color-br-l2">
               Dark #2
               <span class="badge color-bg-normal">.$prefix-$sel-d2</span>
             </li>
-            <li class="list-group-item color-bg-d3 color-br-l3">
+            <li id="c-d3" class="list-group-item color-bg-d3 color-br-l3">
               Dark #3
               <span class="badge color-bg-normal">.$prefix-$sel-d3</span>
             </li>
-            <li class="list-group-item color-bg-d4 color-br-l4">
+            <li id="c-d4" class="list-group-item color-bg-d4 color-br-l4">
               Dark #4
               <span class="badge donly color-bg-d5 color-br-l5 bordered">.$prefix-card-head</span>
               <span class="badge color-bg-normal">.$prefix-$sel-d4</span>
             </li>
-            <li class="list-group-item color-bg-d5 color-br-l5">
+            <li id="c-d5" class="list-group-item color-bg-d5 color-br-l5">
               Dark #5
               <span class="badge donly color-bg-d5 color-br-l5 bordered">.$prefix-hb .$prefix-card-foot</span>
               <span class="badge color-bg-normal">.$prefix-$sel-d5 .$prefix-$sel-dark</span>
@@ -189,7 +192,10 @@
           <h4 class="panel-title">Image</h4>
         </div>
         <div class="panel-body">
-          WIP
+          <canvas id="themeimg" style="display: none; padding: 0; margin-bottom: 0" class="well">
+          </canvas><br/>
+          <%# "Submit" button %>
+          <button type="button" class="btn btn-primary" id="genImgBtn" style="margin-top: 0">Generate Image</button>
         </div>
       </div>
 
