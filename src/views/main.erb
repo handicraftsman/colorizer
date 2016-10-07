@@ -26,8 +26,8 @@
   <body class="fluid-container color-bg">
     <%# Navbar %>
     <nav role="navigation" class="navbar navbar-inverse color-hb" style="border-radius: 0; border-width: 0">
-      <div class="navbar-header">
-        <span class="navbar-brand" style="color: white">Colorizer</a>
+      <div class="navbar-header color-hb">
+        <span class="navbar-brand color-hb">Colorizer</a>
       </div>
     </nav>
 
@@ -78,33 +78,29 @@
           <%# Out-Style radio-button-group %>
           <div class="form-group">
             <label for="styleSelector">Output Style</label><br/>
-            <div class="radio">
-              <label><input type="radio" name="outStyleSelector" value="compressed" enabled>Compressed</label>
-            </div>
-            <div class="radio">
-              <label><input type="radio" name="outStyleSelector" value="compact">Compact</label>
-            </div>
-            <div class="radio">
-              <label><input type="radio" name="outStyleSelector" value="nested">Nested</label>
-            </div>
-            <div class="radio">
-              <label><input type="radio" name="outStyleSelector" value="expanded">Expanded</label>
-            </div>
+            <label class="radio-inline"><input type="radio" name="outStyleSelector" value="compressed" enabled>Compressed</label>
+            <label class="radio-inline"><input type="radio" name="outStyleSelector" value="compact">Compact</label>
+            <label class="radio-inline"><input type="radio" name="outStyleSelector" value="nested">Nested</label>
+            <label class="radio-inline"><input type="radio" name="outStyleSelector" value="expanded">Expanded</label>
           </div>
 
           <%# Dark/Light Switcher %>
           <div class="form-group">
-            <label for="styleSelector">Theme Style</label>
-            <div class="radio">
-              <label><input type="radio" name="themeStyleSelector" value="dark" selected>Dark</label>
-            </div>
-            <div class="radio">
-              <label><input type="radio" name="themeStyleSelector" value="light">Light</label>
-            </div>
+            <label for="styleSelector">Theme Style</label><br/>
+            <label class="radio-inline"><input type="radio" name="themeStyleSelector" value="dark" selected>Dark</label>
+            <label class="radio-inline"><input type="radio" name="themeStyleSelector" value="light">Light</label>
+          </div>
+
+          <%# Color Correction %>
+          <div class="form-group">
+            <label for="correctionSelector">Color Correction (NYI)</label><br/>
+            <label class="radio-inline"><input type="radio" name="correctionSelector" value="none" selected>None</label>
+            <label class="radio-inline"><input type="radio" name="correctionSelector" value="grayscale" selected>Grayscale</label>
           </div>
 
           <%# "Submit" button %>
-          <button type="button" class="btn btn-primary" id="genBtn">Generate Style</button>
+          <button type="button" class="btn btn-primary color-btn color-br-d4" id="genBtn">Generate Theme</button>
+          <button type="button" class="btn btn-primary color-btn-sec" style="background-color: #2C75A0 !important; color: white !important" id="sampBtn">Generate Sample Theme</button>
         </div>
       </div>
 
@@ -195,7 +191,7 @@
           <canvas id="themeimg" style="display: none; padding: 0; margin-bottom: 0" class="well">
           </canvas><br/>
           <%# "Submit" button %>
-          <button type="button" class="btn btn-primary" id="genImgBtn" style="margin-top: 0">Generate Image</button>
+          <button type="button" class="btn btn-primary color-bg-d5 color-br-d4" id="genImgBtn" style="margin-top: 0">Generate Image</button>
         </div>
       </div>
 

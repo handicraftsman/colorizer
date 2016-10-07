@@ -4,6 +4,7 @@ colorgenbynotifydonotuse {
 $color: iColor();
 $prefix: iPrefix();
 $normalWhite: iNormalWhite();
+$mode: iTheme();
 $important: "!important";
 
 $selTypes: (
@@ -12,6 +13,10 @@ $selTypes: (
   ol: "outline-",
   tx: "",
 );
+
+// Implement Dark&Light text themes
+// Implement Dark&Light modes
+// Implement color correction
 
 .#{$prefix}-bg {
   background-color: hsl(hue($color), 20, 100-5) #{$important};
@@ -53,10 +58,26 @@ $selTypes: (
 };
 
 // Register some alternative classnames
-.#{$prefix}-card-foot, .#{$prefix}-hb {
-  @extend .#{$prefix}-bg-d5;
+.#{$prefix}-card-foot, .#{$prefix}-hb, .#{$prefix}-btn {
+  @if ($mode == "dark") {
+    @extend .#{$prefix}-bg-d5;
+  } @elseif ($mode == "light") {
+    @extend .#{$prefix}-bg-l5;
+  };
 };
 
 .#{$prefix}-card-head {
-  @extend .#{$prefix}-bg-d4;
+  @if ($mode == "dark") {
+    @extend .#{$prefix}-bg-d4;
+  } @elseif ($mode == "light") {
+    @extend .#{$prefix}-bg-l4;
+  }
 };
+
+.#{$prefix}-btn-sec {
+  @if ($mode == "dark") {
+    @extend .#{$prefix}-bg-l5;
+  } @elseif ($mode == "light") {
+    @extend .#{$prefix}-bg-d5;
+  }
+}

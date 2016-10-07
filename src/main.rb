@@ -9,6 +9,7 @@ pName = "Colorizer"
 $rColor = Sass::Script::Value::Color.from_hex("#ffffff")
 $rPrefix = Sass::Script::Value::String.new("")
 $rNWhite = Sass::Script::Value::Bool.new(true)
+$rTheme = Sass::Script::Value::String.new("")
 
 module Sass::Script::Functions
   def iColor()
@@ -24,6 +25,11 @@ module Sass::Script::Functions
   def iNormalWhite()
     assert_type $rNWhite, :Bool
     $rNWhite
+  end
+
+  def iTheme()
+    assert_type $rTheme, :String
+    $rTheme
   end
 end
 
@@ -83,6 +89,26 @@ get "/theme.css" do
     lStyle = :compact
   else
     lStyle = :compressed
+  end
+
+  if params["correction"] == nil then
+    lCorrection = "none"
+  elsif params["correction"] == "none" then
+    lCorrection = "none"
+  elsif params["correction"] == "grayscale" then
+    lCorrection = "grayscale"
+  else
+    lCorrection = "none"
+  end
+
+  if params["theme"] == nil then
+    $rTheme = Sass::Script::Value::String.new("dark")
+  elsif params["theme"] == "dark" then
+    $rTheme = Sass::Script::Value::String.new("dark")
+  elsif params["theme"] == "light" then
+    $rTheme = Sass::Script::Value::String.new("light")
+  else
+    $rTheme = Sass::Script::Value::String.new("dark")
   end
 
   if params["prefix"] == nil then

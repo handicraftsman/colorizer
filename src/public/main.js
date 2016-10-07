@@ -1,9 +1,10 @@
-function genThemeUrl(color, prefix, outStyle, themeStyle) {
+function genThemeUrl(color, prefix, outStyle, themeStyle, correction) {
   var url = "/theme.css" +
     "?color=" + color +
     "&prefix=" + prefix +
     "&style=" + outStyle +
-    "&theme=" + themeStyle;
+    "&theme=" + themeStyle +
+    "&correction=" + correction;
   return url;
 };
 
@@ -21,6 +22,10 @@ function getOutStyle() {
 
 function getThemeStyle() {
   return $("input[name=themeStyleSelector]:checked").attr("value");
+};
+
+function getColorCorrection() {
+  return $("input[name=correctionSelector]:checked").attr("value");
 };
 
 function setOutUrl(input) {
@@ -42,20 +47,25 @@ function genSampleTheme() {
   $("#themeSlot").attr({
     "href": url
   });
-  setOutUrl(outUrl = genThemeUrl(getColor(), getPrefix(), getOutStyle(), getThemeStyle()));
+  setOutUrl(outUrl = genThemeUrl(getColor(), getPrefix(), getOutStyle(), getThemeStyle(), getColorCorrection()));
   updColorDemo(getPrefix());
+  $("#colField").val("2C75A0");
 };
 
 $(document).ready(function() {
   prepColorDemo();
 
   $("#genBtn").click(function() {
-    var url = genThemeUrl(getColor(), "color", getOutStyle(), getThemeStyle());
+    var url = genThemeUrl(getColor(), "color", getOutStyle(), getThemeStyle(), getColorCorrection());
     $("#themeSlot").attr({
       "href": url
     });
-    setOutUrl(outUrl = genThemeUrl(getColor(), getPrefix(), getOutStyle(), getThemeStyle()));
+    setOutUrl(outUrl = genThemeUrl(getColor(), getPrefix(), getOutStyle(), getThemeStyle(), getColorCorrection()));
     updColorDemo(getPrefix());
+  });
+
+  $("#sampBtn").click(function() {
+    genSampleTheme();
   });
 
   genSampleTheme();
